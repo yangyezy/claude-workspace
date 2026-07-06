@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Cargo Demo Template — Clone</title>
+<style>
+  :root {
+    --bg: #fffff8;
+    --fg: rgba(0, 0, 0, 0.85);
+    --muted: rgba(0, 0, 0, 0.4);
+    --hr: rgba(0, 0, 0, 0.14);
+    --divider: rgba(0, 0, 0, 0.15);
+    --mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas,
+      "Liberation Mono", monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+  }
+
+  body {
+    font-family: var(--mono);
+    font-size: 0.95rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  a {
+    color: var(--fg);
+    text-decoration: underline;
+    text-decoration-color: rgba(0, 0, 0, 0.25);
+  }
+
+  a:active { opacity: 0.7; }
+
+  hr {
+    background: var(--hr);
+    border: 0;
+    height: 1px;
+    display: block;
+    margin: 1.5rem 0;
+  }
+
+  i { font-style: italic; }
+
+  ul.lineated {
+    margin: 0 0 0 3em;
+    padding: 0;
+    list-style: none;
+    text-indent: -3em;
+  }
+
+  .row {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .row .col {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .media-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: repeating-linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.06),
+      rgba(0, 0, 0, 0.06) 10px,
+      rgba(0, 0, 0, 0.03) 10px,
+      rgba(0, 0, 0, 0.03) 20px
+    );
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  /* ---------- Layout: fixed left/right panels, center scrolls ---------- */
+  .panel {
+    position: fixed;
+    top: 0;
+    width: 25%;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 1rem;
+    z-index: 2;
+    scrollbar-width: none;
+  }
+  .panel::-webkit-scrollbar { display: none; }
+
+  .panel-left { left: 0; }
+  .panel-right { right: 0; }
+
+  .divider-frame {
+    position: fixed;
+    top: 0;
+    left: 25%;
+    width: 50%;
+    height: 100vh;
+    padding: 1rem 0;
+    border-left: 1px solid var(--divider);
+    border-right: 1px solid var(--divider);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .center {
+    position: relative;
+    margin: 0 25%;
+    width: 50%;
+    padding: 1rem;
+    z-index: 1;
+  }
+
+  .clock {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    color: var(--muted);
+    z-index: 3;
+  }
+
+  .muted { color: var(--muted); }
+
+  /* ---------- Mobile: stack panels ---------- */
+  @media (max-width: 900px) {
+    .panel {
+      position: static;
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+    .divider-frame { display: none; }
+    .center {
+      margin: 0;
+      width: 100%;
+    }
+    .clock {
+      position: static;
+      padding: 1rem;
+    }
+    .row {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .row .col[style] { flex: unset !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="divider-frame" aria-hidden="true"></div>
+
+<aside class="panel panel-left">
+  <a href="#" rel="home-page">CARGO DEMO TEMPLATE</a><br>
+  <br><br><br><br>
+  <hr>PROFILE (SAMPLE)<br>
+  <a href="mailto:hello@example.com">hello@example.com</a><br>
+  <a href="https://www.instagram.com/cargoworld/" target="_blank">Instagram</a><br>
+  <br>
+  <div>Vestibulum et dignissim magna. Nullam at ultrices felis. Suspendisse facilisis sagittis sem sit amet tempor. Nam sit amet nibh et enim laoreet porta sit amet vel purus. Maecenas augue velit, feugiat in maximus id, auctor vel ex. Integer placerat massa nec tellus.</div>
+  <br>
+  <a href="#contact">CONTACT</a>
+</aside>
+
+<main class="center">
+  MATERIAL (SAMPLE)<br>
+  <br><br><br><br>
+  <hr>
+
+  <div class="media-placeholder"></div><br><br>
+  <div class="row">
+    <div class="col">1. Test Project<br></div>
+    <div class="col"><i>Bark Barque Baroque</i>, with John R. Nash<br>Ian Hamilton Finlay (1925–2006)<br>
+      The Fleming Collection<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porta ex a porta blandit. Suspendisse feugiat justo at mauris molestie molestie. Ut mattis urna sed sem pulvinar, vitae rutrum nulla ultrices. Curabitur laoreet erat et sapien venenatis luctus.<br></div>
+  </div>
+  <br><br><hr>
+
+  <div class="media-placeholder"></div><br><br>
+  <div class="row">
+    <div class="col">2. Test Project<br></div>
+    <div class="col">
+      <i>Le Passage des Fées</i><br>
+      Exhibition, 1996<br>
+      Paul-Armand Gette and Didier Trenet<br>
+      <br><ul class="lineated"><li>Le Creux de l&rsquo;Enfer Centre d&rsquo;art Contemporain, Thiers, France</li></ul><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porta ex a porta blandit. Suspendisse feugiat justo at mauris molestie molestie. Ut mattis urna sed sem pulvinar, vitae rutrum nulla ultrices. Curabitur laoreet erat et sapien venenatis luctus.<br>
+    </div>
+  </div>
+  <br><br><hr>
+
+  <div class="media-placeholder"></div><br><br>
+  <div class="row">
+    <div class="col">3. Test Project<br></div>
+    <div class="col">Sol Lewitt, <i>A Melodrama<br></i>Postcard<br>
+      John Weber Gallery, 1980<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porta ex a porta blandit. Suspendisse feugiat justo at mauris molestie molestie. Ut mattis urna sed sem pulvinar, vitae rutrum nulla ultrices. Curabitur laoreet erat et sapien venenatis luctus.<br></div>
+  </div>
+  <br><br><hr>
+
+  <div class="media-placeholder"></div><br><br>
+  <div class="row">
+    <div class="col">4. Test Project<br></div>
+    <div class="col">Ian Hamilton Finlay, <i>An Urn for Novalis<br></i>1997/98<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porta ex a porta blandit. Suspendisse feugiat justo at mauris molestie molestie. Ut mattis urna sed sem pulvinar, vitae rutrum nulla ultrices. Curabitur laoreet erat et sapien venenatis luctus.<br></div>
+  </div>
+  <br><br><hr>
+
+  <div class="media-placeholder"></div><br><br>
+  <div class="row">
+    <div class="col">5. Test Project<br></div>
+    <div class="col">Joseph Beuys, <i>Laßt Blumen sprechen<br><br></i>1974<br>
+      5-7/8 x 4-1/4 inches<br>
+      offset lithograph on paper<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porta ex a porta blandit. Suspendisse feugiat justo at mauris molestie molestie. Ut mattis urna sed sem pulvinar, vitae rutrum nulla ultrices. Curabitur laoreet erat et sapien venenatis luctus.<br></div>
+  </div>
+  <br><br><hr>
+
+  <div class="media-placeholder"></div><br><br>
+  <div class="row">
+    <div class="col">6. Test Project<br></div>
+    <div class="col">Emily Harvey<br>
+      EARTHLY WORKS, 1988<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porta ex a porta blandit. Suspendisse feugiat justo at mauris molestie molestie. Ut mattis urna sed sem pulvinar, vitae rutrum nulla ultrices. Curabitur laoreet erat et sapien venenatis luctus.<br></div>
+  </div>
+  <br><br><hr>
+
+  <div class="media-placeholder"></div><br><br>
+  <div class="row">
+    <div class="col">7. Test Project<br></div>
+    <div class="col">
+      <i>Wie Venedig Sehen</i><br>Lothar Baumgarten, 1984<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porta ex a porta blandit. Suspendisse feugiat justo at mauris molestie molestie. Ut mattis urna sed sem pulvinar, vitae rutrum nulla ultrices. Curabitur laoreet erat et sapien venenatis luctus.<br>
+    </div>
+  </div>
+  <br><br><hr>
+
+  <div class="media-placeholder"></div><br><br>
+  <div class="row">
+    <div class="col">8. Test Project<br></div>
+    <div class="col">
+      <i>Exhibition invite postcard</i><br>
+      Alfred Jensen, 1991<br>
+      Pace Gallery<br><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porta ex a porta blandit. Suspendisse feugiat justo at mauris molestie molestie. Ut mattis urna sed sem pulvinar, vitae rutrum nulla ultrices. Curabitur laoreet erat et sapien venenatis luctus.<br>
+    </div>
+  </div>
+  <br><br>
+
+  <hr><br><br><br>
+  <span class="muted">© CARGO TEST 2027</span>
+</main>
+
+<aside class="panel panel-right">
+  CV (SAMPLE)<br>
+  <br><br><br><br>
+  <hr>
+  <div class="row">
+    <div class="col" style="flex:4">Education<br></div>
+    <div class="col" style="flex:8">Vestibulum Euismod Ultrices (Congue)<br>
+      Suspendisse Aenean Lectus<br>
+      2023<br><br>
+      Vestibulum Euismod Ultrices (Tincidunt)<br><br>
+      Aliquam Faucibus Tellus<br>
+      (3 years)</div>
+  </div>
+  <br><br><br><hr>
+
+  <div class="row">
+    <div class="col" style="flex:4">Employment</div>
+    <div class="col" style="flex:8">Vestibulum Ultricies<br>
+      Suspendisse Aenean Vestibulum<br>
+      2023 - 2024<br><br>
+      Pellentesque Habitant<br>
+      &lsquo;Morbi Tristique Senectus&rsquo;<br>
+      Nunc Euismod Faucibus,<br>
+      Porta Libero<br>
+      2024<br><br>
+      Volutpat Ultricies<br>
+      Curabitur Fringilla Ornare,<br>
+      Duis Quis<br>
+      (since 2020)<br><br>
+      Aliquam Convallis<br>
+      <i>TEMPUS, TEMPUS, TEMPUS</i><br>
+      Molestie Vulputate<br>
+      Lacus Venenatis<br>
+      2023<br><br>
+      Nunc Consequat<br>
+      Donec Euismod Imperdiet,<br>
+      Pharetra Massa<br>
+      2023<br><br>
+      Volutpat Ultricies<br>
+      Mauris Tristique Congue, Tellus,<br>
+      Suspendisse Aenean, Porta Libero,<br>
+      Gravida Faucibus<br>
+      2023<br><br>
+      Fusce Suscipit Ligula / Bibendum / Sollicitudin<br>
+      Ipsum Tristique<br>
+      2022<br><br>
+      Accumsan Dui<br>
+      &lsquo;Integer Consequat&rsquo;<br>
+      Purus Euismod Facilisis, Pharetra Massa<br>
+      2022<br><br>
+      TEMPUS, TEMPUS, TEMPUS<br>
+      Aliquam Faucibus Tellus, Euismod Ornare<br>
+      Tincidunt Quam<br>
+      2021<br><br>
+      Facilisis Felis Vestibulum<br>
+      Imperdiet Sodales / Volutpat<br>
+      2021<br><br>
+      Aliquam Faucibus Tellus,<br>
+      Ipsum Tristique, Vestibulum Lectus<br><br>
+      Curabitur Commodo Tempor Ultrices, Porta Libero, Congue Mattis<br>
+      2021<br><br>
+      Venenatis Ligula Pellentesque<br>
+      Heidi Vitae Ornare Ultricies,<br>
+      Pharetra Massa,<br>
+      2020–2022<br><br>
+      Ultricies Auctor Lectus Condimentum<br>
+      2019<br><br>
+      Latrobe Vitae Nisl Congue, Ornare Euismod<br>
+      2019<br><br>
+      Nunc Facilisis Placerat,<br>
+      Egestas Porttitor Ipsum<br>
+      2019<br><br>
+      National Tristique Ornare (NTO),<br>
+      Vel Vestibulum Fringilla<br>
+      2018<br><br>
+      Duis Vitae Ultricies,<br>
+      Aliquet Rhoncus Augue<br>
+      2017</div>
+  </div>
+  <br><br><br><hr>
+
+  <div class="row">
+    <div class="col" style="flex:4">Referrals</div>
+    <div class="col" style="flex:8">Tincidunt Nibh<br>Ultricies Vestibulum<br>Facilisis Ornare,<br>Porta Libero Universitas,<br>tincidunt.nibh@portolibero.edu.au<br>0491 570 006<br><br>
+      Dictumst Gravida<br>Auctor Ligula / Founder<br>Aliquam Aliquam Congue, Felis<br>dictumst.gravida@gmail.com<br>0491 570 156<br><br>
+      Rhoncus Mattis<br>Suspendisse Professor<br>Facilisis, Bibendum Ornare &amp; Congue<br>rhoncus.mattis@facilisis.edu<br>0491 570 157<br><br>
+      Sollicitudin Euismod<br>Founder<br>Pellentesque Mounds, Porta Libero<br>sollicitudin@vestibulum.com<br>0491 570 158<br><br>
+      Egestas Convallis<br>Deputy Parturient Dictum<br>Duis &amp; Ultricies Vestibulum<br>egestas.convallis@vestibulum.edu<br>0491 570 159<br></div>
+  </div>
+  <br><br><br><hr>
+
+  <div class="row">
+    <div class="col" style="flex:4">Skills<br></div>
+    <div class="col" style="flex:8">Vestibulum Ultrices<br>
+      Congue Nisl<br>
+      Tincidunt Euismod<br>
+      Auctor Gravida<br>
+      Molestie Vulputate<br>
+      Tempor<br>
+      Parturient<br>
+      Nibh Ultricies<br>
+      Aliquet Pellentesque<br>
+      Rhoncus Tempor<br>
+      Ullamcorper / Ornare<br>
+      Porttitor Quisque<br>Lacinia<br>
+      Bibendum Facilisis<br>
+      Suspendisse Tristique<br>
+      Viverra Dictum<br>
+      Duis Convallis Et Congue<br>
+      Semper Facilisis</div>
+  </div>
+  <br><br><br><hr>
+
+  <div class="row">
+    <div class="col" style="flex:4">Exhibitions<br></div>
+    <div class="col" style="flex:8">(<i>upcoming</i>) Tincidunt TBA<br>
+      Ultricies Ultricies,<br>
+      Congue Nisl<br>
+      2024<br><br>
+      (<i>upcoming</i>) Vestibulum-Vitae<br>
+      Auctor Ipsum,<br>
+      Dictumst Ligula,<br>
+      Porta Libero<br>
+      2024<br><br>
+      <i>Suspendisse</i><br>
+      Molestie Aenean,<br>
+      Facilisis Tellus,<br>
+      Porta Libero<br>
+      2024<br><br>
+      <i>Ultrices</i><br>
+      Parturient Felis,<br>
+      Pharetra Nibh,<br>
+      Porta Libero<br>
+      2023<br><br>
+      <i>Bibendum</i><br>
+      Adipiscing Nunc,<br>
+      Tincidunt Tristique Congue,<br>
+      Vestibulum Porta Libero<br>
+      2023<br><br>
+      Eu &amp; Fringilla, Collaborative Imperdiet with Quam Sodales,<br>
+      Donec Tristique Porta Libero<br>
+      2023<br><br>
+      <i>Semper</i><br>
+      Cursus Tempus,<br>
+      Porta Libero<br>
+      2023<br><br>
+      Dictum, Elit. Vestibulum<br>
+      Gravida Congue<br>
+      2023<br><br>
+      <i>Rhoncus Congue</i><br>
+      Ullamcorper Suspendisse,<br>
+      Duis Ornare Porta Libero<br>
+      2023<br><br>
+      <i>Pellentesque Ornare</i><br>
+      Porttitor Ultrices,<br>
+      Sagittis Tempor<br>
+      2022<br><br>
+      <i>Aliquam Dolor</i><br>
+      Netus Curabitur,<br>
+      Porta Libero<br>
+      2022<br><br>
+      <i>Euismod Gravida</i><br>
+      Egestas Nibh,<br>
+      Blandit Tellus<br>
+      2022<br><br>
+      <i>Tristique</i><br>
+      Phasellus Ornare,<br>
+      Porta Libero<br>
+      2022<br><br>
+      <i>Faucibus</i><br>
+      Lacinia Convallis,<br>
+      Duis Quam<br>
+      2022<br><br>
+      Mattis Sollicitudin Ultricies<br>
+      Dignissim Luctus,<br>
+      Congue Ipsum,<br>
+      Porta Libero<br>
+      2022<br><br>
+      <i>Egestas</i><br>
+      Condimentum Senectus,<br>
+      Purus Aliquet,<br>
+      Porta Libero<br>
+      2021<br></div>
+  </div>
+  <br><br><br><hr>
+
+  <div class="row">
+    <div class="col" style="flex:4">Awards</div>
+    <div class="col" style="flex:8"><i>Tempus Egestas</i> Nibh Vestibulum<br>
+      Facilisis: Ultricies Ornare Ligula<br>
+      2021<br><br>
+      <i>Rhoncus Auctor Ornare</i>; Tincidunt Tristique, Porta Libero<br>
+      2020<br></div>
+  </div>
+  <br><br><br><hr>
+
+  <div class="row">
+    <div class="col" style="flex:4">Press<br></div>
+    <div class="col" style="flex:8">&lsquo;<i>Vestibulum Inceptos Gravida</i>&rsquo;, Ornare Review,<br>
+      by Tincidunt Nisl<br>
+      2024<br><br>
+      &lsquo;Ullamcorper Faucibus (Congue) Euismod&rsquo;, by Ligula Parturient, Bibendum Review Porta Libero<br>
+      2023<br><br>
+      Dictumst Tristique, Facilisis Magazine, Edition Two, Porta Libero<br>
+      2021<br><br>
+      Auctor Adipiscing Art Magazine, Porta Libero<br>
+      2020<br><br>
+      Sollicitudin Ornare Magazine,<br>
+      Porta Libero<br>
+      2020<br></div>
+  </div>
+  <br><br><br><hr><br><br><br><br><br>
+  <span class="muted">Last Updated 24.10.31</span>
+</aside>
+
+<div class="clock" id="clock">00:00:00</div>
+
+<script>
+  function pad(n) { return String(n).padStart(2, "0"); }
+  function tick() {
+    var d = new Date();
+    document.getElementById("clock").textContent =
+      pad(d.getHours()) + ":" + pad(d.getMinutes()) + ":" + pad(d.getSeconds());
+  }
+  tick();
+  setInterval(tick, 1000);
+</script>
+
+</body>
+</html>

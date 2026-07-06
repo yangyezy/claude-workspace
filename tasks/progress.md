@@ -26,3 +26,9 @@
   - `.env`에 `DISCORD_WEBHOOK_URL` 저장 (하드코딩 아님, 환경변수로만 참조)
   - `weather_report.ps1`에 `.env` 파싱 + Discord 전송 함수 추가 (웹훅 미설정 시 자동 스킵)
   - 실제 전송 테스트 성공 확인
+
+- claude-workspace GitHub private 레포 생성 및 업로드
+  - `.gitignore` 작성 (`.env`, `docs/resume.pdf`, `weather.txt`, `tasks/downloads_reorg_manifest_*.txt` 제외)
+  - `README.md` 폴더 구조 재정리
+  - `git init` → 첫 커밋 "Initial setup" (7개 파일) → `gh repo create --private`로 업로드
+  - 레포 주소: https://github.com/yangyezy/claude-workspace (private)

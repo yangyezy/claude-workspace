@@ -34,13 +34,13 @@
 
 ## 2026-07-06 (GitHub 업로드)
 
-- [ ] `.gitignore` 작성 (제외 대상: `.env`, `*.key`, `*.pem`, `id_rsa`, `credentials*`, `docs/resume.pdf`, `tasks/downloads_reorg_manifest_*.txt`, `weather.txt`)
-- [ ] `README.md`를 폴더 구조 보기 좋게 정리 (트리 구조 + 파일별 역할 갱신)
-- [ ] `git init` (로컬 저장소 초기화)
-- [ ] git 커밋 대상 확인 (`git status`)로 민감 파일이 안 걸리는지 재검증
-- [ ] 첫 커밋: 커밋 메시지 "Initial setup"
-- [ ] `gh repo create claude-workspace --private --source=. --remote=origin` 으로 private 레포 생성
-- [ ] `git push -u origin main` 으로 첫 푸시
+- [x] `.gitignore` 작성 (제외 대상: `.env`, `*.key`, `*.pem`, `id_rsa`, `credentials*`, `docs/resume.pdf`, `tasks/downloads_reorg_manifest_*.txt`, `weather.txt`)
+- [x] `README.md`를 폴더 구조 보기 좋게 정리 (트리 구조 + 파일별 역할 갱신)
+- [x] `git init` (로컬 저장소 초기화)
+- [x] git 커밋 대상 확인 (`git status`)로 민감 파일이 안 걸리는지 재검증
+- [x] 첫 커밋: 커밋 메시지 "Initial setup"
+- [x] `gh repo create claude-workspace --private --source=. --remote=origin` 으로 private 레포 생성
+- [x] `git push -u origin main` 으로 첫 푸시 (실제로는 master 브랜치로 push됨)
 
 ---
 
