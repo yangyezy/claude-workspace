@@ -1,0 +1,17 @@
+# 환경변수 / 민감 정보
+.env
+.env.*
+*.key
+*.pem
+id_rsa
+id_rsa.*
+credentials*
+
+# 개인정보 파일
+docs/resume.pdf
+
+# 개인 파일명이 담긴 정리 로그
+tasks/downloads_reorg_manifest_*.txt
+
+# 매일 자동 생성/덮어쓰기되는 리포트
+weather.txt
