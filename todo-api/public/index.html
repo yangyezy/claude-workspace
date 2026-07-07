@@ -8,16 +8,29 @@
 </head>
 <body>
 <main class="app">
-  <h1>내 할 일</h1>
-
-  <form id="add-form" class="add-form">
-    <input id="title-input" type="text" placeholder="할 일을 입력하세요" autocomplete="off" />
-    <button type="submit">추가</button>
-  </form>
+  <header class="app-header">
+    <h1>Todo List</h1>
+    <svg class="logo" viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M2 2L10 12L2 22" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M13 2L21 12L13 22" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M27 22L19 12L27 2" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M38 22L30 12L38 2" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </header>
 
   <p id="error" class="error" hidden></p>
 
   <ul id="todo-list" class="todo-list"></ul>
+
+  <section class="add-section">
+    <div class="add-heading">
+      <h2>Add</h2>
+      <button type="button" id="add-icon-btn" class="plus-btn" aria-label="추가">+</button>
+    </div>
+    <form id="add-form">
+      <input id="title-input" type="text" autocomplete="off" />
+    </form>
+  </section>
 </main>
 
 <script src="script.js"></script>

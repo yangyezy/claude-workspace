@@ -6,7 +6,7 @@ const PORT = 3000;
 function createWindow() {
   const win = new BrowserWindow({
     width: 480,
-    height: 700,
+    height: 860,
     title: '내 할 일',
     autoHideMenuBar: true,
   });

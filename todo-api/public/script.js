@@ -2,6 +2,7 @@ const form = document.getElementById('add-form');
 const input = document.getElementById('title-input');
 const list = document.getElementById('todo-list');
 const errorEl = document.getElementById('error');
+const plusBtn = document.getElementById('add-icon-btn');
 
 function showError(message) {
   errorEl.textContent = message;
@@ -27,22 +28,26 @@ function renderTodos(todos) {
     const li = document.createElement('li');
     li.className = 'todo-item' + (todo.done ? ' done' : '');
 
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.checked = todo.done;
-    checkbox.addEventListener('change', () => toggleDone(todo.id, checkbox.checked));
-
     const title = document.createElement('span');
     title.className = 'title';
     title.textContent = todo.title;
 
+    const checkBtn = document.createElement('button');
+    checkBtn.type = 'button';
+    checkBtn.className = 'check-box';
+    checkBtn.setAttribute('aria-label', '완료 체크');
+    checkBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="#6f9ceb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    checkBtn.addEventListener('click', () => toggleDone(todo.id, !todo.done));
+
     const deleteBtn = document.createElement('button');
+    deleteBtn.type = 'button';
     deleteBtn.className = 'delete-btn';
     deleteBtn.textContent = '×';
+    deleteBtn.setAttribute('aria-label', '삭제');
     deleteBtn.addEventListener('click', () => deleteTodo(todo.id));
 
-    li.appendChild(checkbox);
     li.appendChild(title);
+    li.appendChild(checkBtn);
     li.appendChild(deleteBtn);
     list.appendChild(li);
   }
@@ -95,6 +100,10 @@ form.addEventListener('submit', async (e) => {
   } catch (err) {
     showError(err.message);
   }
+});
+
+plusBtn.addEventListener('click', () => {
+  form.requestSubmit();
 });
 
 loadTodos();
