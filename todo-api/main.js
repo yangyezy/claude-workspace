@@ -15,6 +15,7 @@ function createWindow() {
 
 app.whenReady().then(() => {
   process.env.TODO_DATA_FILE = path.join(app.getPath('userData'), 'todos.json');
+  process.env.ICLOUD_CONFIG_FILE = path.join(app.getPath('userData'), '.env');
 
   const expressApp = require('./server');
   expressApp.listen(PORT, () => {

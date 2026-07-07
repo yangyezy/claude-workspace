@@ -29,6 +29,24 @@
 - [x] 빌드된 exe 실제로 실행해서 추가/체크/삭제 확인 + 재시작 후에도 데이터 남아있는지 확인 (데이터는 `%APPDATA%\todo-app\todos.json`에 저장됨)
 - [x] 사용법 안내 (exe 위치, 데이터 파일 위치)
 
+## 2026-07-07 (아이클라우드 캘린더 연동)
+
+- 요청: 아이클라우드 캘린더에 등록된 일정을 자동으로 Todo 목록에 올리는 워크플로우 추가
+- 확정된 사양:
+  - 동기화 시점: 앱이 켜져 있는 동안 15분마다 자동 (+ 앱 시작 시 1회)
+  - 가져올 범위: 오늘 + 앞으로 7일
+  - 삭제 처리: 캘린더에서 지워지면 Todo에서도 자동 삭제. 반대로 Todo에서 캘린더 유래 항목을 직접 지우면 다음 동기화 때 다시 생김(완료 체크로 처리 권장) — 캘린더가 "원본" 역할
+  - 인증: Apple ID + 앱 암호(App-Specific Password)를 CalDAV로 사용. 코드에 하드코딩하지 않고 설정 파일(`.env`, git 제외)에 저장, 사용자가 직접 입력
+
+- [x] `tsdav`(CalDAV 클라이언트), `dotenv`, `node-ical`(iCalendar 파싱) 설치
+- [x] `.env` 설정 방식 정리: 개발 모드는 `todo-api/.env`, 패키징된 앱은 `%APPDATA%\todo-app\.env` 에서 `ICLOUD_APPLE_ID`, `ICLOUD_APP_PASSWORD` 읽기 (미설정 시 캘린더 동기화만 조용히 비활성화, 앱은 정상 동작) — 템플릿은 `todo-api/.env.example`
+- [x] `store.js`로 Todo 상태 관리를 분리(서버/동기화 모듈이 공유), `icloud-sync.js` 작성: CalDAV로 iCloud 캘린더 접속 → 오늘~+7일 일정 조회 → Todo와 대조(추가된 일정은 새 Todo 생성 `source:'calendar'`+`calendarEventId`, 캘린더에서 사라진 건 Todo에서도 삭제)
+- [x] `server.js`에 15분 주기 타이머로 동기화 실행 연결 (시작 시 1회 즉시 실행 포함), `/sync-status` 엔드포인트 추가
+- [x] 화면(UI)에서 캘린더 유래 항목을 📅 표시로 구분, 동기화 에러 시 화면에 안내 메시지 표시, 30초마다 목록 자동 새로고침
+- [x] 사용법 안내: 애플 앱 암호 발급 방법(appleid.apple.com), `.env` 파일 위치/작성법 안내
+- [x] 실제 동작 확인: 자격증명 없을 때 정상 비활성화(`enabled:false`, 에러 없음) 확인, 가짜 자격증명으로 인증 실패 시 `/sync-status`에 에러 메시지 노출 확인, 실패한 동기화가 기존 Todo를 손상시키지 않음 확인. 실제 iCloud 계정으로 정상 동기화되는지는 사용자가 진짜 앱 암호를 넣은 뒤 최종 확인 필요
+- [x] `package.json` build.files에 새 모듈(`store.js`,`icloud-sync.js`) 누락된 것 발견 후 추가, exe 재빌드하여 패키징된 앱에서도 `.env` 인식/에러 처리 정상 동작 확인
+
 ## 2026-07-06
 
 - [x] `tasks/` 폴더 + `todo.md`, `progress.md` 생성

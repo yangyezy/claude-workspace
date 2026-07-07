@@ -59,6 +59,7 @@ body {
   flex: 1;
   display: flex;
   align-items: center;
+  gap: 6px;
   padding: 0 14px;
   font-size: 17px;
   word-break: break-word;
@@ -67,6 +68,11 @@ body {
 .todo-item.done .title {
   text-decoration: line-through;
   color: #6f9ceb;
+}
+
+.calendar-badge {
+  font-size: 13px;
+  flex-shrink: 0;
 }
 
 .check-box {

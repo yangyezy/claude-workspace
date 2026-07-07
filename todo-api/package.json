@@ -13,7 +13,10 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "express": "^5.2.1"
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "node-ical": "^0.26.1",
+    "tsdav": "^2.3.0"
   },
   "devDependencies": {
     "electron": "^43.0.0",
@@ -25,6 +28,8 @@
     "files": [
       "main.js",
       "server.js",
+      "store.js",
+      "icloud-sync.js",
       "public/**/*",
       "package.json"
     ],

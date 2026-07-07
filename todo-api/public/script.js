@@ -2,6 +2,7 @@ const form = document.getElementById('add-form');
 const input = document.getElementById('title-input');
 const list = document.getElementById('todo-list');
 const errorEl = document.getElementById('error');
+const syncErrorEl = document.getElementById('sync-error');
 const plusBtn = document.getElementById('add-icon-btn');
 
 function showError(message) {
@@ -30,7 +31,14 @@ function renderTodos(todos) {
 
     const title = document.createElement('span');
     title.className = 'title';
-    title.textContent = todo.title;
+    if (todo.source === 'calendar') {
+      const badge = document.createElement('span');
+      badge.className = 'calendar-badge';
+      badge.textContent = '📅';
+      badge.title = '아이클라우드 캘린더에서 가져온 일정';
+      title.appendChild(badge);
+    }
+    title.appendChild(document.createTextNode(todo.title));
 
     const checkBtn = document.createElement('button');
     checkBtn.type = 'button';
@@ -106,4 +114,25 @@ plusBtn.addEventListener('click', () => {
   form.requestSubmit();
 });
 
+async function checkSyncStatus() {
+  try {
+    const res = await fetch('/sync-status');
+    const status = await res.json();
+
+    if (status.lastError) {
+      syncErrorEl.textContent = '아이클라우드 캘린더 동기화 실패: ' + status.lastError;
+      syncErrorEl.hidden = false;
+    } else {
+      syncErrorEl.hidden = true;
+    }
+  } catch (err) {
+    // 상태 조회 자체가 실패해도 화면 동작에는 영향 없음
+  }
+}
+
 loadTodos();
+checkSyncStatus();
+
+// 캘린더 동기화(서버 쪽 15분 주기)로 추가/삭제된 항목을 화면에 반영하기 위해 주기적으로 새로고침
+setInterval(loadTodos, 30 * 1000);
+setInterval(checkSyncStatus, 60 * 1000);
