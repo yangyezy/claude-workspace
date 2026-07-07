@@ -5,13 +5,20 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "OkDanDan";
+  src: url("fonts/OkDanDan-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: "Cloudsofa Namgim", Arial, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  font-family: "OkDanDan", Arial, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
   background: #f6df9f;
   color: #1a1a1a;
 }
@@ -32,6 +39,7 @@ body {
 }
 
 .app-header h1 {
+  font-family: "Cloudsofa Namgim", Arial, sans-serif;
   font-size: 40px;
   font-weight: 800;
   letter-spacing: -0.5px;
@@ -158,6 +166,7 @@ body {
 }
 
 .add-heading h2 {
+  font-family: "Cloudsofa Namgim", Arial, sans-serif;
   font-size: 32px;
   font-weight: 800;
   margin: 0;
