@@ -7,7 +7,7 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 480,
     height: 860,
-    title: '내 할 일',
+    title: 'Todo List',
     autoHideMenuBar: true,
   });
   win.loadURL(`http://localhost:${PORT}`);

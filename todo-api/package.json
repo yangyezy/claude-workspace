@@ -24,7 +24,7 @@
   },
   "build": {
     "appId": "com.yejee.todoapp",
-    "productName": "내 할 일",
+    "productName": "Todo List",
     "files": [
       "main.js",
       "server.js",
