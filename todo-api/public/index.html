@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Todo List</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main class="app">
+  <header class="app-header">
+    <h1>Todo List</h1>
+  </header>
+
+  <p id="error" class="error" hidden></p>
+  <p id="sync-error" class="error" hidden></p>
+
+  <ul id="todo-list" class="todo-list"></ul>
+
+  <section class="add-section">
+    <div class="add-heading">
+      <h2>Add</h2>
+      <button type="button" id="add-icon-btn" class="plus-btn" aria-label="추가">+</button>
+    </div>
+    <form id="add-form">
+      <input id="title-input" type="text" autocomplete="off" />
+    </form>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

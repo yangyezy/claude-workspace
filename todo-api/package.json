@@ -1,0 +1,43 @@
+{
+  "name": "todo-app",
+  "version": "1.0.0",
+  "description": "혼자 쓰는 사무실용 Todo 데스크톱 앱",
+  "main": "main.js",
+  "scripts": {
+    "start": "node server.js",
+    "electron": "electron .",
+    "dist": "electron-builder"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "node-ical": "^0.26.1",
+    "tsdav": "^2.3.0"
+  },
+  "devDependencies": {
+    "electron": "^43.0.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.yejee.todoapp",
+    "productName": "Todo List",
+    "files": [
+      "main.js",
+      "server.js",
+      "store.js",
+      "icloud-sync.js",
+      "public/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "portable"
+    },
+    "directories": {
+      "output": "dist"
+    }
+  }
+}
