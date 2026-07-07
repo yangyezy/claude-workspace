@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>내 할 일</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main class="app">
+  <h1>내 할 일</h1>
+
+  <form id="add-form" class="add-form">
+    <input id="title-input" type="text" placeholder="할 일을 입력하세요" autocomplete="off" />
+    <button type="submit">추가</button>
+  </form>
+
+  <p id="error" class="error" hidden></p>
+
+  <ul id="todo-list" class="todo-list"></ul>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

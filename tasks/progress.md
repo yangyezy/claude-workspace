@@ -41,3 +41,11 @@
   - `title`이 비어있으면 400 에러 응답
   - 실행: `todo-api` 폴더에서 `node server.js` → `http://localhost:3000`
   - PowerShell `Invoke-RestMethod`로 한글 title 정상 저장 확인, 빈 title 400 에러 확인
+
+- Todo API → 사무실 전용 데스크톱 앱으로 확장 (`todo-api/`)
+  - 백엔드를 GET/POST/PATCH(완료체크)/DELETE 전체 CRUD로 확장, 저장 방식을 메모리 → `todos.json` 파일로 변경 (재시작해도 유지)
+  - `public/` 폴더에 목록/추가/체크/삭제 화면(HTML/CSS/JS) 작성, express static으로 서빙
+  - Electron(`main.js`)으로 감싸서 브라우저 없이 자체 창으로 뜨는 앱으로 전환. 데이터 파일은 `app.getPath('userData')` 위치(`%APPDATA%\todo-app\todos.json`)에 저장하도록 처리해 패키징 후에도 쓰기 가능하도록 함
+  - `electron-builder`로 Windows portable exe 빌드 → `todo-api/dist/내 할 일 1.0.0.exe` (설치 없이 더블클릭 실행, 아이콘은 기본 Electron 아이콘)
+  - 실제 exe를 실행해 추가/완료체크 동작 확인, 프로세스 완전 종료 후 재실행해도 데이터가 남아있는 것 확인
+  - 아이클라우드 캘린더 연동은 사용자 요청으로 이번 범위에서 제외 (다음 작업으로 남김)

@@ -13,6 +13,22 @@
 - [x] 로컬에서 서버 실행 후 PowerShell(Invoke-RestMethod)로 실제 호출해서 정상 동작 확인 (한글 title 정상 저장, 빈 title은 400 에러 확인)
 - [x] 사용법 안내 (실행 방법, 호출 예시)
 
+## 2026-07-07 (Todo 데스크톱 앱으로 확장)
+
+- 요청: 사무실 PC 한 대에서 혼자 쓸 수 있는 앱/웹으로 만들기
+- 확정된 사양:
+  - 기능: 추가 + 목록보기 + 완료체크 + 삭제 (완전한 CRUD)
+  - 저장: JSON 파일에 영구 저장 (재시작해도 안 사라짐)
+  - 실행: 아이콘 더블클릭으로 바로 실행되는 데스크톱 앱 (Electron)
+  - 아이클라우드 캘린더 연동은 이번 범위에서 제외 (나중에 별도 진행하기로 결정)
+
+- [x] 백엔드 확장: `server.js`를 GET/POST/PATCH/DELETE 전체 CRUD로 확장, 메모리 대신 `todos.json` 파일에 저장
+- [x] 프론트엔드 화면 작성: 목록/추가입력/체크박스/삭제 버튼이 있는 `public/index.html` + `script.js` + `style.css`
+- [x] Electron으로 감싸기: `electron` 설치, `main.js` 작성 (백엔드를 내부에서 실행하고 BrowserWindow로 화면 표시)
+- [x] `electron-builder`로 Windows용 portable `.exe` 빌드 (설치 없이 더블클릭 실행) → `todo-api/dist/내 할 일 1.0.0.exe`
+- [x] 빌드된 exe 실제로 실행해서 추가/체크/삭제 확인 + 재시작 후에도 데이터 남아있는지 확인 (데이터는 `%APPDATA%\todo-app\todos.json`에 저장됨)
+- [x] 사용법 안내 (exe 위치, 데이터 파일 위치)
+
 ## 2026-07-06
 
 - [x] `tasks/` 폴더 + `todo.md`, `progress.md` 생성

@@ -1,10 +1,12 @@
 {
-  "name": "todo-api",
+  "name": "todo-app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "혼자 쓰는 사무실용 Todo 데스크톱 앱",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "electron": "electron .",
+    "dist": "electron-builder"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +14,25 @@
   "type": "commonjs",
   "dependencies": {
     "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "electron": "^43.0.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.yejee.todoapp",
+    "productName": "내 할 일",
+    "files": [
+      "main.js",
+      "server.js",
+      "public/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "portable"
+    },
+    "directories": {
+      "output": "dist"
+    }
   }
 }

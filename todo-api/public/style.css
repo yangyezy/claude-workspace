@@ -1,0 +1,106 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  background: #f4f5f7;
+  color: #1f2328;
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.add-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.add-form input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.add-form button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.add-form button:hover {
+  background: #1d4ed8;
+}
+
+.error {
+  color: #d92d20;
+  font-size: 14px;
+  margin: 0 0 12px;
+}
+
+.todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1px solid #e4e7ec;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.todo-item .title {
+  flex: 1;
+  font-size: 15px;
+  word-break: break-word;
+}
+
+.todo-item.done .title {
+  text-decoration: line-through;
+  color: #98a2b3;
+}
+
+.todo-item .delete-btn {
+  border: none;
+  background: none;
+  color: #98a2b3;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+.todo-item .delete-btn:hover {
+  color: #d92d20;
+}
+
+.empty {
+  color: #98a2b3;
+  font-size: 14px;
+  text-align: center;
+  padding: 24px 0;
+}
