@@ -14,6 +14,13 @@ function clearError() {
   errorEl.hidden = true;
 }
 
+function formatDueDate(iso) {
+  const d = new Date(iso);
+  const dateStr = d.toLocaleDateString('ko-KR', { month: 'numeric', day: 'numeric', weekday: 'short' });
+  const timeStr = d.toLocaleTimeString('ko-KR', { hour: 'numeric', minute: '2-digit' });
+  return `${dateStr} ${timeStr}`;
+}
+
 function renderTodos(todos) {
   list.innerHTML = '';
 
@@ -34,7 +41,7 @@ function renderTodos(todos) {
     if (todo.source === 'calendar') {
       const badge = document.createElement('span');
       badge.className = 'calendar-badge';
-      badge.textContent = '📅';
+      badge.textContent = todo.dueAt ? `📅 ${formatDueDate(todo.dueAt)}` : '📅';
       badge.title = '아이클라우드 캘린더에서 가져온 일정';
       title.appendChild(badge);
     }

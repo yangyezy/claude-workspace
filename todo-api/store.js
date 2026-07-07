@@ -19,11 +19,16 @@ function save() {
   fs.writeFileSync(DATA_FILE, JSON.stringify(state, null, 2), 'utf-8');
 }
 
+// 일정 날짜(dueAt)가 있는 항목은 빠른 날짜 순으로, 날짜가 없는(수동 추가) 항목은 그 뒤에 이어 붙임
 function getTodos() {
-  return state.todos;
+  const dated = state.todos
+    .filter((t) => t.dueAt)
+    .sort((a, b) => new Date(a.dueAt) - new Date(b.dueAt));
+  const undated = state.todos.filter((t) => !t.dueAt);
+  return [...dated, ...undated];
 }
 
-function addTodo({ title, source = 'manual', calendarEventId = null }) {
+function addTodo({ title, source = 'manual', calendarEventId = null, dueAt = null }) {
   const todo = {
     id: state.nextId++,
     title: title.trim(),
@@ -31,6 +36,7 @@ function addTodo({ title, source = 'manual', calendarEventId = null }) {
     createdAt: new Date().toISOString(),
     source,
     calendarEventId,
+    dueAt,
   };
   state.todos.push(todo);
   save();

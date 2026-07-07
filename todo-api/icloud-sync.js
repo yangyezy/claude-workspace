@@ -64,6 +64,7 @@ async function fetchUpcomingEvents(days) {
         events.push({
           uid: component.uid,
           title: component.summary,
+          dueAt: component.start instanceof Date ? component.start.toISOString() : null,
         });
       }
     }
@@ -86,9 +87,18 @@ async function syncCalendar() {
 
   let added = 0;
   for (const event of events) {
-    if (!store.findByCalendarEventId(event.uid)) {
-      store.addTodo({ title: event.title, source: 'calendar', calendarEventId: event.uid });
+    const existingTodo = store.findByCalendarEventId(event.uid);
+    if (!existingTodo) {
+      store.addTodo({
+        title: event.title,
+        source: 'calendar',
+        calendarEventId: event.uid,
+        dueAt: event.dueAt,
+      });
       added += 1;
+    } else if (existingTodo.title !== event.title || existingTodo.dueAt !== event.dueAt) {
+      // 일정이 캘린더에서 수정(제목/시간 변경)되면 Todo에도 반영
+      store.updateTodo(existingTodo.id, { title: event.title, dueAt: event.dueAt });
     }
   }
 
