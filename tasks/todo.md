@@ -3,6 +3,16 @@
 > 새 작업을 시작할 때 여기에 체크리스트로 추가하세요.
 > 완료된 항목은 지우지 말고 `[x]`로 체크만 하세요. (기록은 progress.md에 남기기)
 
+## 2026-07-07 (Todo 추가 API)
+
+- 요청: Todo 항목을 추가하는 API 만들기
+- 확정된 사양: Node.js(Express), 메모리 저장(서버 재시작 시 초기화), "추가" 기능만 (조회/삭제 없음)
+
+- [x] `todo-api/` 폴더 생성, `npm init`으로 `package.json` 작성, `express` 설치
+- [x] `server.js` 작성: 메모리 배열에 Todo 저장, `POST /todos` 엔드포인트로 항목 추가 (요청 body에 `title` 등 받아서 id 부여 후 저장, 추가된 항목 응답으로 반환)
+- [x] 로컬에서 서버 실행 후 PowerShell(Invoke-RestMethod)로 실제 호출해서 정상 동작 확인 (한글 title 정상 저장, 빈 title은 400 에러 확인)
+- [x] 사용법 안내 (실행 방법, 호출 예시)
+
 ## 2026-07-06
 
 - [x] `tasks/` 폴더 + `todo.md`, `progress.md` 생성

@@ -32,3 +32,12 @@
   - `README.md` 폴더 구조 재정리
   - `git init` → 첫 커밋 "Initial setup" (7개 파일) → `gh repo create --private`로 업로드
   - 레포 주소: https://github.com/yangyezy/claude-workspace (private)
+
+## 2026-07-07
+
+- Todo 추가 API 만들기 (`todo-api/`)
+  - Node.js(Express) 기반, 메모리 배열에 저장 (서버 재시작하면 초기화됨)
+  - `POST /todos` — body의 `title`을 받아 id 자동 부여 후 저장, 저장된 항목을 응답으로 반환
+  - `title`이 비어있으면 400 에러 응답
+  - 실행: `todo-api` 폴더에서 `node server.js` → `http://localhost:3000`
+  - PowerShell `Invoke-RestMethod`로 한글 title 정상 저장 확인, 빈 title 400 에러 확인
